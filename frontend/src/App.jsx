@@ -5,6 +5,8 @@ import BlogPage from './pages/BlogPage'
 import BlogPost from './pages/BlogPost'
 import AuthorsPage from './pages/AuthorsPage'
 import Contact from './pages/Contact'
+import SignIn from './pages/SignIn'
+import SignUp from './pages/SignUp'
 
 
 function App() {
@@ -27,12 +29,20 @@ function App() {
           element: <BlogPost />
         },
         {
-         path:"authors",
+          path:"authors",
           element: <AuthorsPage />
         },
         {
          path:"contact",
           element: <Contact />
+        },
+        {
+          path:"login",
+          element: <SignIn />
+        },
+        {
+         path:"signup",
+          element: <SignUp />
         },
       ]
     }

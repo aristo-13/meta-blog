@@ -1,4 +1,5 @@
 import React from 'react'
+import AuthorCard from '../components/AuthorCard'
 
 function AuthorsPage() {
  const authors = [1,2,3,4,5,6,7,8,9]
@@ -18,8 +19,12 @@ function AuthorsPage() {
              </p>
         </div>
 
-        <div>
-           
+        <div className='flex flex-wrap gap-2 justify-center items-center'>
+           {
+            authors.map((author) => (
+              <AuthorCard />
+            ))
+           }
         </div>
     </div>
   )
