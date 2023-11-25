@@ -24,7 +24,7 @@ function Homepage() {
              }
           </div>
 
-          <button className='border-2 p-2 rounded-lg m-5'>View All Posts</button>
+          <button className='border-2 p-2 rounded-lg m-5  text-black/80 dark:text-white'>View All Posts</button>
         </div>
 
         <Adspace />

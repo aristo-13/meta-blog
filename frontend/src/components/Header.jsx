@@ -24,9 +24,9 @@ useEffect(() => {
      <div className='hidden md:flex items-center gap-4 text-black/80 md:text-sm lg:text-lg dark:text-white/90'>
         <Link to='/' className=''>Home</Link>
         <Link to='blogpage' className=''>Blog</Link>
-        <Link className=''>Authors</Link>
+        <Link to='authors' className=''>Authors</Link>
         <Link to='blogpost' className=' whitespace-nowrap'>Post blog</Link>
-        <Link className=''>Contact</Link>
+        <Link to='contact' className=''>Contact</Link>
      </div>
      <div className='flex items-center gap-2'>
         <div className='hidden md:block h-[30px] overflow-hidden rounded-full'>

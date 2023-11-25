@@ -8,20 +8,20 @@ function Footer({dark}) {
         {/* top */}
         <div className='flex flex-col md:flex-row gap-2 pb-10 border-b dark:border-white/20 border-blue'>
             <div className="flex-1  flex flex-col gap-3 p-10">
-                <h1 className='font-bold '>About</h1>
+                <h1 className='font-bold text-black/80 dark:text-white'>About</h1>
                 <p className='text-justify  text-gray-500 dark:text-white/70'>
                     Lorem ipsum dolor sit amet consectetur adipisicing elit.
                     Autem possimus quibusdam modi corporis magni obcaecati
                     ipsum molestias.Itaque, vitae natus.
                 </p>
                 <ul className='text-gray-500 dark:text-white/70'>
-                    <li><span className='font-bold text-white'>Email: </span>example@gmail.com</li>
-                    <li><span className='font-bold text-white'>Phone: </span>+233 2 5689 3793</li>
+                    <li><span className='font-bold dark:text-white'>Email: </span>example@gmail.com</li>
+                    <li><span className='font-bold dark:text-white'>Phone: </span>+233 2 5689 3793</li>
                 </ul>
             </div>
             <div className="flex-1  flex justify-between mx-auto">
                 <div className="flex-1 flex flex-col gap-3 p-2 sm:p-10">
-                  <h1 className='font-bold whitespace-nowrap'>Quick Link</h1>
+                  <h1 className='font-bold whitespace-nowrap  text-black/80 dark:text-white'>Quick Link</h1>
                   <ul className='flex flex-col gap-3 text-gray-500 dark:text-white/70'>
                     <li>Home</li>
                     <li>About</li>
@@ -32,7 +32,7 @@ function Footer({dark}) {
                   </ul>
                 </div>
                 <div className="flex-1 flex flex-col  items-center gap-3 p-2 sm:p-10">
-                  <h1 className='font-bold'>Category</h1>
+                  <h1 className='font-bold text-black/80 dark:text-white'>Category</h1>
                   <ul className='flex flex-col gap-3  text-gray-500 dark:text-white/70'>
                     <li>Lifestyle</li>
                     <li>Technology</li>

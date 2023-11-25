@@ -3,6 +3,8 @@ import PagesLayout from './pages/PagesLayout'
 import Homepage from './pages/Homepage'
 import BlogPage from './pages/BlogPage'
 import BlogPost from './pages/BlogPost'
+import AuthorsPage from './pages/AuthorsPage'
+import Contact from './pages/Contact'
 
 
 function App() {
@@ -23,6 +25,14 @@ function App() {
         {
          path:"blogpost",
           element: <BlogPost />
+        },
+        {
+         path:"authors",
+          element: <AuthorsPage />
+        },
+        {
+         path:"contact",
+          element: <Contact />
         },
       ]
     }
