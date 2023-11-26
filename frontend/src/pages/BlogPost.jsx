@@ -53,7 +53,7 @@ function BlogPost() {
                   <option value="Gaming">Gaming</option>
                   <option value="Education">Education</option>
                   <option value="Environment">Environment</option>
-                </select>
+              </select>
 
                 <div className='flex-1 border'>
 
@@ -67,7 +67,10 @@ function BlogPost() {
               </div>
            </div>
 
-
+            <div className='flex gap-4'>
+                <button className='flex-1 border p-3 bg-[teal] text-white'>Save as Draft</button>
+                <button type='submit' className='flex-1 border p-3 bg-blue-950 text-white'>Publish</button>
+            </div>
        </form>
 
 
