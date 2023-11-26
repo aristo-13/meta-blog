@@ -1,13 +1,16 @@
-import React,{useState,useEffect} from 'react'
+import React,{useState,useEffect,useLayoutEffect} from 'react'
 import { Outlet } from 'react-router-dom'
 import Header from '../components/Header'
 import Footer from '../components/Footer'
 
 function PagesLayout() {
-  const [dark,setDark] = useState(false)
-
+  const [dark,setDark] = useState(localStorage.getItem("Darkmode"))
 
   useEffect(() => {
+      localStorage.setItem("Darkmode", dark)
+  },[])
+
+  useLayoutEffect(() => {
     if(dark){
         document.documentElement.classList.add("dark");
     }else{

@@ -1,6 +1,7 @@
 import React from 'react'
 import Adspace from '../components/Adspace'
 import PostCard from '../components/PostCard'
+import { Link } from 'react-router-dom'
 
 function Homepage() {
  const posts = [1,2,3,4,5,6,7,8,9]
@@ -24,7 +25,7 @@ function Homepage() {
              }
           </div>
 
-          <button className='border-2 p-2 rounded-lg m-5  text-black/80 dark:text-white'>View All Posts</button>
+          <Link to='/blogpage' className='border-2 p-2 rounded-lg m-5  text-black/80 dark:text-white'>View All Posts</Link>
         </div>
 
         <Adspace />
