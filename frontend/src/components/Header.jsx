@@ -1,4 +1,4 @@
-import React, { useState,useEffect } from 'react'
+import React, { useState,useEffect, useContext } from 'react'
 import Logo from './Logo'
 import { Link } from 'react-router-dom'
 import ToggleOffIcon from '@mui/icons-material/ToggleOff';
@@ -6,12 +6,13 @@ import ToggleOnIcon from '@mui/icons-material/ToggleOn';
 import MenuIcon from '@mui/icons-material/Menu';
 import { FaUser } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
+import { AuthenticationContext } from '../Contexts/AuthContext';
 
 function Header({dark,setDark}) {
 const [menu,setMenu] = useState(false)
 const [border,setBorder] = useState(false)
 const [ToggleUserIcon,setToggleUserIcon] = useState(false)
-const [LoggedIn,setLoggedIn] = useState(false)
+const {LoggedIn, setLoggedIn, setUserName,user,username,Logout} = useContext(AuthenticationContext)
 const navigate = useNavigate()
 
 
@@ -24,8 +25,16 @@ const navigate = useNavigate()
   }
 
 
-  const Logout = () => {
-   console.log("logged out")
+  const SignOut = async() => {
+    try {
+      await Logout()
+      navigate('/')
+      setUserName(null)
+      setLoggedIn(false)
+      localStorage.removeItem('username')
+    } catch (error) {
+      console.log(error)
+    }
   }
 
 
@@ -52,9 +61,9 @@ const navigate = useNavigate()
         <div onClick={()=> setToggleUserIcon(!ToggleUserIcon)} className='text-blue-950 dark:text-white text-2xl relative cursor-pointer'>
            <FaUser />
 
-           <div className='absolute right-[2px] mt-2 flex flex-col justify-center items-center bg-white dark:bg-[#3B3C4A] dark:text-white border text-blue-950 p-4 rounded text-sm gap-2 shadow-md duration-300' style={{top: ToggleUserIcon? "25px" : "-1000%"}}>
-               <span>User</span>
-               <span className='text-gray-500'>example@gmail.com</span>
+           <div className='absolute w-[250px] right-[2px] mt-2 flex flex-col justify-center items-center bg-white dark:bg-[#3B3C4A] dark:text-white border text-blue-950 p-4 rounded text-sm gap-2 shadow-md duration-300' style={{top: ToggleUserIcon? "25px" : "-1000%"}}>
+               <span>{username? username : "User"}</span>
+               <span className='text-gray-500'>{user?.email || "example@gmail.com"}</span>
 
                <div className='w-full flex items-center justify-between border p-2'>
                    <span>Dark Mode</span>
@@ -64,7 +73,7 @@ const navigate = useNavigate()
                </div>
 
                <button
-                 onClick={LoggedIn? () => Logout() : ()=> navigate('/login')}
+                 onClick={LoggedIn? () => SignOut() : ()=> navigate('/login')}
                 className='w-full p-2 border bg-[#222263] text-white'
                >
                   {LoggedIn? "Logout" : "Login"}
