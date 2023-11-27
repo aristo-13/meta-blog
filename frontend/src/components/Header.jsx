@@ -39,13 +39,13 @@ const navigate = useNavigate()
 
 
   return (
-    <header className='flex justify-between items-center p-5 md:p-0 md:px-5 fixed top-0 left-0 w-full bg-white dark:bg-[#3B3C4A] z-10 ' style={{borderBottom: border? "solid 1px rgba(0, 0, 0, 0.272)" : "none"}}>
+    <header className='flex justify-between items-center p-5 md:p-0 md:px-5 fixed top-0 left-0 w-full bg-white dark:bg-[#181A2A] z-10 ' style={{borderBottom: border? "solid 1px rgba(0, 0, 0, 0.272)" : "none"}}>
      <div className='flex'>
         <button onClick={() => setMenu(!menu)} className='md:hidden text-blue-950 dark:text-white'><MenuIcon fontSize="large"/></button>
         <Logo dark={dark}/> 
      </div>
      
-     <div className='fixed flex flex-col gap-2 shadow-2xl bg-white dark:bg-[#3B3C4A] dark:md:bg-transparent p-4 z-10 border-b w-full left-0 md:bg-transparent md:static md:flex-row md:justify-center md:items-center md:gap-4 md:border-none md:text-center text-black/80 md:text-sm lg:text-lg dark:text-white/90 duration-300 md:shadow-none' style={{top: menu? "56px" : "-100%"}}>
+     <div className='fixed flex flex-col gap-2 shadow-2xl bg-white dark:bg-[#181A2A] dark:md:bg-transparent p-4 z-10 border-b w-full left-0 md:bg-transparent md:static md:flex-row md:justify-center md:items-center md:gap-4 md:border-none md:text-center text-black/80 md:text-sm lg:text-lg dark:text-white/90 duration-300 md:shadow-none' style={{top: menu? "56px" : "-100%"}}>
         <Link onClick={()=> setMenu(!menu)} className='hover:bg-black/20 p-3 md:p-1 rounded-md' to='/'>Home</Link>
         <Link onClick={()=> setMenu(!menu)} className='hover:bg-black/20 p-3 md:p-1 rounded-md' to='blogpage'>Blog</Link>
         <Link onClick={()=> setMenu(!menu)} className='hover:bg-black/20 p-3 md:p-1 rounded-md' to='authors'>Authors</Link>
@@ -61,7 +61,7 @@ const navigate = useNavigate()
         <div onClick={()=> setToggleUserIcon(!ToggleUserIcon)} className='text-blue-950 dark:text-white text-2xl relative cursor-pointer'>
            <FaUser />
 
-           <div className='absolute w-[250px] right-[2px] mt-2 flex flex-col justify-center items-center bg-white dark:bg-[#3B3C4A] dark:text-white border text-blue-950 p-4 rounded text-sm gap-2 shadow-md duration-300' style={{top: ToggleUserIcon? "25px" : "-1000%"}}>
+           <div className='absolute w-[250px] right-[2px] mt-2 flex flex-col justify-center items-center bg-white dark:bg-[#181A2A] dark:text-white border text-blue-950 p-4 rounded text-sm gap-2 shadow-md duration-300' style={{top: ToggleUserIcon? "25px" : "-1000%"}}>
                <span>{username? username : "User"}</span>
                <span className='text-gray-500'>{user?.email || "example@gmail.com"}</span>
 

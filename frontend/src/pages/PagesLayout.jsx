@@ -20,7 +20,7 @@ function PagesLayout() {
 
 
   return (
-    <div className='dark:dark:bg-[#3B3C4A] text-white overflow-x-hidden'>
+    <div className='dark:dark:bg-[#181A2A] text-white overflow-x-hidden'>
         <div className='max-w-[1300px] mx-auto min-h-screen relative'>
             <Header dark={dark} setDark={setDark}/>
             <div className='pt-20'>

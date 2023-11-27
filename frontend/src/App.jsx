@@ -7,7 +7,7 @@ import AuthorsPage from './pages/AuthorsPage'
 import Contact from './pages/Contact'
 import SignIn from './pages/SignIn'
 import SignUp from './pages/SignUp'
-
+import AuthorDetailsPage from './pages/AuthorDetailsPage'
 
 function App() {
 
@@ -31,6 +31,10 @@ function App() {
         {
           path:"authors",
           element: <AuthorsPage />
+        },
+        {
+          path:"authors/:id",
+          element: <AuthorDetailsPage />
         },
         {
          path:"contact",

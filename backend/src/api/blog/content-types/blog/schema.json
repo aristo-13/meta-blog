@@ -18,9 +18,6 @@
     "date": {
       "type": "string"
     },
-    "AuthorId": {
-      "type": "biginteger"
-    },
     "summery": {
       "type": "text"
     },
@@ -42,6 +39,16 @@
       "type": "relation",
       "relation": "manyToOne",
       "target": "api::category.category",
+      "inversedBy": "blogs"
+    },
+    "isRecent": {
+      "type": "boolean",
+      "default": true
+    },
+    "author": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::author.author",
       "inversedBy": "blogs"
     }
   }

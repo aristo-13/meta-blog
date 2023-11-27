@@ -52,7 +52,6 @@ function BlogPost() {
                   <option value="Photography">Photography</option>
                   <option value="Gaming">Gaming</option>
                   <option value="Education">Education</option>
-                  <option value="Environment">Environment</option>
               </select>
 
                 <div className='flex-1 border'>

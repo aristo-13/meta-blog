@@ -1,9 +1,20 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import PostCard from '../components/PostCard'
 import Adspace from "../components/Adspace"
+import useFetch from '../hooks/useFetch'
 
 function BlogPage() {
-    const posts = [1,2,3,4,5,6,7,8,9]
+    const {data,Loading,error} = useFetch('/blogs?populate=*')
+    const [blog,setBlog] = useState([])
+
+useEffect(()=> {
+  const dat = data.slice(0,5)
+   setBlog(dat)
+},[data])
+
+const loadmore = () =>{
+  setBlog(data)
+}
 
   return (
     <main className='flex flex-col justify-center items-center'>
@@ -12,13 +23,13 @@ function BlogPage() {
 
        <div className='w-full flex flex-wrap gap-[1rem] justify-center px-3 pb-5'>
              {
-              posts.map((post) => (
-                <PostCard />
+              blog?.map((post) => (
+                <PostCard post={post}/>
               ))
              }
           </div>
 
-          <button className='border-2 p-2 rounded-lg m-5  text-black/80 dark:text-white'>Load More</button>
+          <button onClick={loadmore} className='border-2 p-2 rounded-lg m-5  text-black/80 dark:text-white'>Load More</button>
          <Adspace />
     </main>
   )

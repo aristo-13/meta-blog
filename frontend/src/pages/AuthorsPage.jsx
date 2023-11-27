@@ -1,8 +1,9 @@
 import React from 'react'
 import AuthorCard from '../components/AuthorCard'
+import useFetch from '../hooks/useFetch'
 
 function AuthorsPage() {
- const authors = [1,2,3,4,5,6,7,8,9]
+ const {data,Loading,error} = useFetch('/authors?populate=*')
 
   return (
     <div>
@@ -18,11 +19,11 @@ function AuthorsPage() {
                 platform.
              </p>
         </div>
-
+          {console.log(data? data: "")}
         <div className='flex flex-wrap gap-2 justify-center items-center'>
            {
-            authors.map((author) => (
-              <AuthorCard />
+            data.map((author) => (
+              <AuthorCard author={author}/>
             ))
            }
         </div>
