@@ -2,7 +2,7 @@ import React from 'react'
 import { useParams } from 'react-router-dom'
 import useFetch from '../hooks/useFetch'
 import PostCard from '../components/PostCard'
-import Loading from '../components/Loading'
+import LoadingSkel from '../components/LoadingSkel'
 
 function AuthorDetailsPage() {
 const {id} = useParams()
@@ -23,8 +23,7 @@ const {data,Loading,error} = useFetch(`/authors/${id}?populate=*`)
 
       <div className='flex flex-wrap gap-4 justify-center'>
         {Loading? 
-            /* <Loading styles='w-[min(100%,300px)] lg:w-[392px] h-[450px] bg-gray-500' num={10}/> */
-            <p>Loading...</p>
+            <LoadingSkel styles='w-[min(100%,300px)] lg:w-[392px] h-[450px] bg-gray-500' num={10}/>
            : data?.attributes?.blogs.data?.map((blog) => (
                 <PostCard post={blog}/>
             ))

@@ -1,6 +1,6 @@
 import React from 'react'
 
-function Loading({styles,num}) {
+function LoadingSkel({styles,num}) {
     const result = [];
     for (let i = 1; i <= num; i++) {
         result.push(i);
@@ -11,7 +11,7 @@ function Loading({styles,num}) {
     
     {
        result.map((instance,index) => (
-        <div className={styles + " bg-black/20 animate-pulse"} key={index}>
+        <div className={styles + " animate-pulse"} key={index}>
       
         </div>
        ))
@@ -21,4 +21,4 @@ function Loading({styles,num}) {
   )
 }
 
-export default Loading
+export default LoadingSkel

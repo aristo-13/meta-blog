@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import PostCard from '../components/PostCard'
 import Adspace from "../components/Adspace"
 import useFetch from '../hooks/useFetch'
+import LoadingSkel from '../components/LoadingSkel'
 
 function BlogPage() {
     const {data,Loading,error} = useFetch('/blogs?populate=*')
@@ -22,8 +23,8 @@ const loadmore = () =>{
        </div>
 
        <div className='w-full flex flex-wrap gap-[1rem] justify-center px-3 pb-5'>
-             {
-              blog?.map((post) => (
+             {Loading? <LoadingSkel styles='w-[min(100%,300px)] lg:w-[392px] h-[450px] bg-gray-500 rounded-xl' num={10}/>
+              :blog?.map((post) => (
                 <PostCard post={post}/>
               ))
              }

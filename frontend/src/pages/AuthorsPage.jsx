@@ -1,6 +1,7 @@
 import React from 'react'
 import AuthorCard from '../components/AuthorCard'
 import useFetch from '../hooks/useFetch'
+import LoadingSkel from '../components/LoadingSkel'
 
 function AuthorsPage() {
  const {data,Loading,error} = useFetch('/authors?populate=*')
@@ -21,8 +22,9 @@ function AuthorsPage() {
         </div>
           {console.log(data? data: "")}
         <div className='flex flex-wrap gap-2 justify-center items-center'>
-           {
-            data.map((author) => (
+
+           {Loading ? <LoadingSkel styles='w-[250px] h-[250px] rounded-xl bg-gray-500' num={10}/>
+            :data.map((author) => (
               <AuthorCard author={author}/>
             ))
            }

@@ -4,6 +4,7 @@ import PostCard from '../components/PostCard'
 import { Link } from 'react-router-dom'
 import useFetch from '../hooks/useFetch'
 import { useState,useEffect } from 'react'
+import LoadingSkel from '../components/LoadingSkel'
 
 function Homepage() {
  const posts = [1,2,3,4,5,6,7,8,9]
@@ -28,8 +29,9 @@ function Homepage() {
         <div className='flex flex-col justify-center items-center'>
           <h1 className='w-full text-xl font-bold pl-6'>Latest Post</h1>
           <div className='w-full flex flex-wrap gap-[1rem] justify-center p-4'>
-             {
-              blog?.map((post) => (
+              {Loading? <LoadingSkel styles='w-[min(100%,300px)] lg:w-[392px] h-[450px] bg-gray-500 rounded-xl' num={10}/>
+             
+              : blog?.map((post) => (
                 <PostCard post={post}/>
               ))
              }
