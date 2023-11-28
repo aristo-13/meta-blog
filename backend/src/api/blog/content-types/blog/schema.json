@@ -27,19 +27,10 @@
     "img": {
       "type": "media",
       "multiple": false,
-      "required": false,
+      "required": true,
       "allowedTypes": [
-        "images",
-        "files",
-        "videos",
-        "audios"
+        "images"
       ]
-    },
-    "Category": {
-      "type": "relation",
-      "relation": "manyToOne",
-      "target": "api::category.category",
-      "inversedBy": "blogs"
     },
     "isRecent": {
       "type": "boolean",
@@ -50,6 +41,23 @@
       "relation": "manyToOne",
       "target": "api::author.author",
       "inversedBy": "blogs"
+    },
+    "Category": {
+      "type": "enumeration",
+      "enum": [
+        "Travel",
+        "Lifestyle",
+        "Health",
+        "Technology",
+        "Fashion",
+        "Food",
+        "Parenting",
+        "Finance",
+        "Business",
+        "Photography",
+        "Gaming",
+        "Education"
+      ]
     }
   }
 }

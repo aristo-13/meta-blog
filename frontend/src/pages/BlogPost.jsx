@@ -3,12 +3,24 @@ import Overlay from '../components/Overlay'
 import { Link } from 'react-router-dom'
 import { useContext } from 'react'
 import { AuthenticationContext } from '../Contexts/AuthContext'
+import api from '../api/api'
+import useFetch from '../hooks/useFetch'
+import { useNavigate } from 'react-router-dom'
 
 function BlogPost() {
  const [ConfirmAuthor,setConfirmAuthor] = useState(false)
  const {LoggedIn} = useContext(AuthenticationContext)
  const [image,setImg] = useState(null)
+ const [title,setTitle] = useState('')
+ const [content,setContent] = useState('')
+ const [category,setCategory] = useState('')
+ const [ImgUrl,setImgUrl] = useState('')
+ const [summery,setSummery] = useState('')
+ const {data,Loading,error} = useFetch('/blogs?populate=*')
+ const username = localStorage.getItem("username")
+ const navigate = useNavigate()
 
+ const date = new Date()
    useEffect(() => {
     if(!LoggedIn){
       setConfirmAuthor(true)
@@ -16,6 +28,44 @@ function BlogPost() {
       setConfirmAuthor(false)
     }
    },[LoggedIn])
+
+
+
+const postBlog = async(e) =>{
+    e.preventDefault()
+
+    const formData = new FormData();
+    formData.append('files', image);
+
+    const uploadResponse = await api.post('/upload', formData, {
+      headers: {
+        'Content-Type': 'multipart/form-data',
+      },
+    });
+
+    setImgUrl(uploadResponse.data[0].url);
+
+    const newEntries = {
+      title: title,
+      date: date.toLocaleDateString(),
+      summery: summery,
+      Category: category,
+      img: ImgUrl,
+      isRecent: true,
+      content: content,
+      author: {data: {name: username}}
+    }
+
+    {console.log(ImgUrl)}
+    try {
+      const res = await api.post(`/blogs`, {data: newEntries})
+      console.log(res)
+      navigate('/blogpage')
+    } catch (error) {
+      console.log(error)
+    }
+}
+
 
   return (
     <div className='text-blue-950 dark:text-white w-full  flex flex-col items-center p-4 relative'>
@@ -33,12 +83,12 @@ function BlogPost() {
   </fieldset>
 
         
-       <form className='w-[99%] md:w-[60%] p-5 flex flex-col gap-4'>
-           <input type="text" className='w-full p-4 rounded text-blue-950 dark:text-white border-2 dark:border bg-slate-400/10 dark:bg-black/5' placeholder='Blog Title...'/>
-           <textarea  className='w-full h-[200px] p-4 rounded text-blue-950 dark:text-white border-2 dark:border  bg-slate-400/10 dark:bg-black/5' placeholder='Start Writing...'></textarea>
+       <form className='w-[99%] md:w-[60%] p-5 flex flex-col gap-4' onSubmit={postBlog}>
+           <input type="text" className='w-full p-4 rounded text-blue-950 dark:text-white border-2 dark:border bg-slate-400/10 dark:bg-black/5' placeholder='Blog Title...' onChange={(e)=>setTitle(e.target.value)}/>
+           <textarea  className='w-full h-[200px] p-4 rounded text-blue-950 dark:text-white border-2 dark:border  bg-slate-400/10 dark:bg-black/5' placeholder='Start Writing...' onChange={(e)=>setContent(e.target.value)}></textarea>
 
            <div className='w-full flex flex-col md:flex-row gap-2'>
-              <select id="blogCategory" name="blogCategory" className='flex-1 border p-2 dark:bg-[#3B3C4A]'>
+              <select id="blogCategory" name="blogCategory" className='flex-1 border p-2 dark:bg-[#3B3C4A]' onChange={(e)=>setCategory(e.target.value)}>
                   <option value="General">Select Category...</option>
                   <option value="Travel">Travel</option>
                   <option value="Lifestyle">Lifestyle</option>
@@ -54,13 +104,14 @@ function BlogPost() {
                   <option value="Education">Education</option>
               </select>
 
-                <div className='flex-1 border'>
-
-                </div>
+                <input type="text" placeholder='summery' className='p-2 flex-1 p-4 rounded text-blue-950 dark:text-white border-2 dark:border bg-slate-400/10 dark:bg-black/5' onChange={(e)=>setSummery(e.target.value)}/>
            </div>
 
            <div className='flex justify-between items-center border p-2'>
-              <input type="file" accept='image/*' onChange={(e) => setImg(e.target.files[0])}/>
+              <input type="file" accept='image/*' onChange={(e) => {
+                setImg(e.target.files[0])
+                setImgUrl(e.target.files[0])
+              }}/>
               <div className='w-[50px] h-[50px] overflow-hidden bg-gray-500  border-2'>
                  {image &&  <img src={URL.createObjectURL(image)} alt=""  className='w-full h-full object-cover'/>}
               </div>

@@ -6,8 +6,8 @@ function PostCard({post}) {
        <div className='w-full h-[240px] rounded-md bg-gray-500 bg-cover relative' style={{backgroundImage: `url(${import.meta.env.VITE_IMG_URL+post?.attributes?.img?.data?.attributes?.url})`}}>
        </div>
        <div className='w-full  text-blue-950 p-2'>
-         <span className='bg-blue-400/5 text-blue-500 px-3 py-1 top-1 left-1 rounded'>{post?.attributes?.Category?.data?.attributes?.name}</span>
-          <p className='text-gray-500 p-2 dark:text-white font-bold'>{post?.attributes?.summery}</p>
+         <span className='bg-blue-400/5 text-blue-500 px-3 py-1 top-1 left-1 rounded'>{post?.attributes?.Category}</span>
+          <p className='text-gray-800 p-2 dark:text-white font-bold'>{post?.attributes?.summery}</p>
        </div>
        <div className='w-full flex text-blue-950 justify-between items-center'>
         <div className='flex gap-2 items-center'>

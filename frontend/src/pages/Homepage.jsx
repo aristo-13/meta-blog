@@ -12,17 +12,30 @@ function Homepage() {
  const [blog,setBlog] = useState([])
 
  useEffect(()=> {
-  const dat = data.slice(0,3)
+  const dat = data.reverse().slice(0,3)
    setBlog(dat)
 },[data])
 
   return (
     <main>
       {console.log(data? data : "")}
-      <div className='w-[90%] h-[500px] bg-slate-400/20 mx-auto rounded-xl relative mb-10 bg-cover' style={{backgroundImage: `url(${import.meta.env.VITE_IMG_URL+data[2]?.attributes?.img?.data?.attributes?.url})`}}>
-            <div className="w-[90%] h-[200px] md:w-[400px] md:h-[250px] bg-white absolute bottom-2 left-2 md:-bottom-5 md:left-10 border-2 rounded-2xl shadow-xl" ></div>
+      <div className='w-[90%] h-[500px] bg-slate-400/20 mx-auto rounded-xl relative mb-10 bg-cover' style={{backgroundImage: `url(${import.meta.env.VITE_IMG_URL+data[4]?.attributes?.img?.data?.attributes?.url})`}}>
+          <div className="w-[90%] h-[200px] md:w-[400px] md:h-[250px] bg-white dark:bg-[#181A2A] absolute bottom-2 left-2 md:-bottom-5 md:left-10 border-2 rounded-2xl shadow-xl flex  flex-col p-2" >
+                  <div className='w-full  text-blue-950 p-2'>
+                     <span className='bg-blue-700 text-white px-3 py-[2px] top-[2px] left-1 rounded'>{data[4]?.attributes?.Category}</span>
+                      <p className='text-blue-950 p-2 dark:text-white font-bold'>{data[4]?.attributes?.summery}</p>
+                  </div>
+            <div className='w-full absolute bottom-2 left-0 flex text-blue-950 justify-between items-center p-2'>
+                <div className='flex gap-2 items-center'>
+                      <div className='w-[25px] h-[25px] rounded-full bg-cover border bg-gray-400' style={{backgroundImage: `url(${import.meta.env.VITE_IMG_URL+data[4]?.attributes?.author?.data?.attributes?.avatar?.data?.attributes?.url})`}}></div>
+                      <h1 className='text-[0.8rem] text-gray-500'>{data[4]?.attributes?.author?.data?.attributes?.name}</h1>
+                </div>
+                
+                <span className='text-[0.7rem] text-gray-500'>{data[2]?.attributes?.date}</span>
+            </div>
+         </div>
 
-        </div>
+      </div>
 
         <Adspace />
 
