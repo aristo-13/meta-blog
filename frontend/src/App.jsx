@@ -9,6 +9,7 @@ import SignIn from './pages/SignIn'
 import SignUp from './pages/SignUp'
 import AuthorDetailsPage from './pages/AuthorDetailsPage'
 import SingleBlog from './pages/SingleBlog'
+import MissingPage from './pages/MissingPage'
 
 function App() {
 
@@ -52,6 +53,10 @@ function App() {
         {
          path:"signup",
           element: <SignUp />
+        },
+        {
+         path:"*",
+          element: <MissingPage />
         },
       ]
     }

@@ -30,7 +30,8 @@ function SingleBlog() {
 
           <Adspace />
          <div className='p-4'>
-            <p className='text-blue-950 dark:text-white text-center'>
+             <h1 className='text-2xl font-bold text-center pb-4 text-blue-950 dark:text-white'>{data?.attributes?.title}</h1>
+            <p className='text-blue-950 dark:text-gray-400 text-center px-4'>
               {(data?.attributes?.content)?.substring(0,900)} <br /> <br />
               {(data?.attributes?.content)?.substring(900,1200)} <br /> <br />
               {(data?.attributes?.content)?.substring(1200,3000)} <br />  <br />

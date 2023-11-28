@@ -8,3 +8,6 @@
 *{
     font-family: 'Poppins', sans-serif;
 }
+.nav a.active{
+    background-color: rgba(0, 0, 0, 0.272);
+}
