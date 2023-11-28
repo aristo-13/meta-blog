@@ -7,7 +7,7 @@ function AuthorsPage() {
  const {data,Loading,error} = useFetch('/authors?populate=*')
 
   return (
-    <div>
+    <div className='pb-4'>
         <div className="w-full flex flex-col justify-center items-center p-3">
             <h1 className='font-bold text-xl text-[#0d0d2b]/80 dark:text-white/90'>Meet Our Authors</h1>
             <p className='text-center max-w-[60%] text-gray-500 dark:text-gray-400'>

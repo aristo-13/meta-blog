@@ -8,6 +8,7 @@ import Contact from './pages/Contact'
 import SignIn from './pages/SignIn'
 import SignUp from './pages/SignUp'
 import AuthorDetailsPage from './pages/AuthorDetailsPage'
+import SingleBlog from './pages/SingleBlog'
 
 function App() {
 
@@ -23,6 +24,10 @@ function App() {
         {
          path:"blogpage",
           element: <BlogPage />
+        },
+         {
+          path:"blogs/:id",
+          element: <SingleBlog />
         },
         {
          path:"blogpost",

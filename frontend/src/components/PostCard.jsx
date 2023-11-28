@@ -1,8 +1,9 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 function PostCard({post}) {
   return (
-    <div className='w-[min(100%,300px)] lg:w-[392px] flex flex-col p-4 justify-center items-center gap-4 border rounded-md flex-none cursor-pointer'>
+    <Link to={`/blogs/${post.id}`} className='w-[min(100%,300px)] lg:w-[392px] flex flex-col p-4 justify-center items-center gap-4 border rounded-md flex-none cursor-pointer'>
        <div className='w-full h-[240px] rounded-md bg-gray-500 bg-cover relative' style={{backgroundImage: `url(${import.meta.env.VITE_IMG_URL+post?.attributes?.img?.data?.attributes?.url})`}}>
        </div>
        <div className='w-full  text-blue-950 p-2'>
@@ -17,7 +18,7 @@ function PostCard({post}) {
            
            <span className='text-[0.7rem] text-gray-500'>{post?.attributes?.date}</span>
        </div>
-    </div>
+    </Link>
   )
 }
 

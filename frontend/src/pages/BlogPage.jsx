@@ -3,6 +3,7 @@ import PostCard from '../components/PostCard'
 import Adspace from "../components/Adspace"
 import useFetch from '../hooks/useFetch'
 import LoadingSkel from '../components/LoadingSkel'
+import {Link} from 'react-router-dom'
 
 function BlogPage() {
     const {data,Loading,error} = useFetch('/blogs?populate=*')
@@ -27,7 +28,7 @@ const loadmore = () =>{
           <div className='absolute bottom-0 left-0 p-4 w-[min(100%,500px)]'>
             <p className='p-2 text-white font-bold'>{data[3]?.attributes?.summery}</p>
 
-            <button className='w-[120px] px-4 py-2 border ml-2 rounded backdrop-blur shadow-sm shadow-white/30 hover:bg-blue-950 duration-300'>Read</button>
+            <Link to={`/blogs/${data[3]?.id}`} className='w-[120px] px-4 py-2 border ml-2 rounded backdrop-blur shadow-sm shadow-white/30 hover:bg-blue-950 duration-300'>Read</Link>
           </div>
            
           
