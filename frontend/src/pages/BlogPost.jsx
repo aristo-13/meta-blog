@@ -84,8 +84,8 @@ const postBlog = async(e) =>{
 
         
        <form className='w-[99%] md:w-[60%] p-5 flex flex-col gap-4' onSubmit={postBlog}>
-           <input type="text" className='w-full p-4 rounded text-blue-950 dark:text-white border-2 dark:border bg-slate-400/10 dark:bg-black/5' placeholder='Blog Title...' onChange={(e)=>setTitle(e.target.value)}/>
-           <textarea  className='w-full h-[200px] p-4 rounded text-blue-950 dark:text-white border-2 dark:border  bg-slate-400/10 dark:bg-black/5' placeholder='Start Writing...' onChange={(e)=>setContent(e.target.value)}></textarea>
+           <input required type="text" className='w-full p-4 rounded text-blue-950 dark:text-white border-2 dark:border bg-slate-400/10 dark:bg-black/5' placeholder='Blog Title...' onChange={(e)=>setTitle(e.target.value)}/>
+           <textarea required  className='w-full h-[200px] p-4 rounded text-blue-950 dark:text-white border-2 dark:border  bg-slate-400/10 dark:bg-black/5' placeholder='Start Writing...' onChange={(e)=>setContent(e.target.value)}></textarea>
 
            <div className='w-full flex flex-col md:flex-row gap-2'>
               <select id="blogCategory" name="blogCategory" className='flex-1 border p-2 dark:bg-[#3B3C4A]' onChange={(e)=>setCategory(e.target.value)}>
@@ -104,7 +104,7 @@ const postBlog = async(e) =>{
                   <option value="Education">Education</option>
               </select>
 
-                <input type="text" placeholder='summery' className='p-2 flex-1 p-4 rounded text-blue-950 dark:text-white border-2 dark:border bg-slate-400/10 dark:bg-black/5' onChange={(e)=>setSummery(e.target.value)}/>
+                <input required type="text" placeholder='summery' className='p-2 flex-1 p-4 rounded text-blue-950 dark:text-white border-2 dark:border bg-slate-400/10 dark:bg-black/5' onChange={(e)=>setSummery(e.target.value)}/>
            </div>
 
            <div className='flex justify-between items-center border p-2'>
